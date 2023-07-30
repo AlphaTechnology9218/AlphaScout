@@ -1,0 +1,184 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bokeh/3.0.1/bokeh.min.js"
+        integrity="sha512-p7EUyPmeDeOwHiu7fIZNboAcQLxei3sWtXoHoShWWiPNUSRng/Xs5JPcaFPRa4dKy9IuHjyIQuLE4caGCwuewA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<h1>{% block title %} Scouting {% endblock %}</h1>
+    <div class="container-fluid">
+        <div class="row ">
+            <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off" name="AliV" checked value="R">
+                <label class="btn btn-outline-danger" for="btncheck1">Aliança Vermelha</label>
+            
+                <input type="checkbox" class="btn-check" id="btncheck2" autocomplete="off" name="AliA" checked value="B">
+                <label class="btn btn-outline-primary" for="btncheck2">Aliança Azul</label>
+            </div>
+        </div>
+        <div class="row ">
+            <div class="col-sm R selectt" style="background-color: #ff0000;" >
+                <div class="container text-center">
+                    
+                    <div class="row mb">
+                        <form action="#" method="get">
+                            <table class="table">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th scope="col" class="text-center text-light">Equipe</th>
+                                      <th scope="col" class="text-center text-light">Docked Autônomo</th>
+                                      <th scope="col" class="text-center text-light">Docked Teleoperado</th>
+                                      <th scope="col" class="text-center text-light">Park Teleoperado</th>
+                                      
+                                    </tr>
+                                    <tr>
+                                        <th scope="row" class="text-center text-light">{{Red[0]}}</th>
+                                        <td class="text-center text-light">{{infosR[0][0]}}</td>
+                                        <td class="text-center text-light">{{infosR[0][1]}}</td>
+                                        <td class="text-center text-light">{{infosR[0][2]}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row" class="text-center text-light">{{Red[1]}}</th>
+                                        <td class="text-center text-light">{{infosR[1][0]}}</td>
+                                        <td class="text-center text-light">{{infosR[1][1]}}</td>
+                                        <td class="text-center text-light">{{infosR[1][2]}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row" class="text-center text-light">{{Red[2]}}</th>
+                                        <td class="text-center text-light ">{{infosR[2][0]}}</td>
+                                        <td class="text-center text-light">{{infosR[2][1]}}</td>
+                                        <td class="text-center text-light">{{infosR[2][2]}}</td>
+                                    </tr>
+                                  </thead>
+                            </table>
+                        </form>
+                    </div>
+                    <div class="row mb-5">
+                        <div class="col w-25">
+                            {{ divPie1R | safe }}
+                            {{ scriptPie1R | safe }}
+                        </div>
+                        <div class="col w-25">
+                            {{ divPie2R | safe }}
+                            {{ scriptPie2R | safe }}
+                        </div>
+                    </div>
+                    <div class="row mb-5">
+                        <div class="col w-25">
+                            {{ divBarR | safe }}
+                            {{ scriptBarR | safe }}
+                        </div>
+                    </div>
+                    <div class="row mb">
+                                <table class="table">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                            <th scope="col" class="text-center text-light">Equipes</th>
+                                          <th scope="col" class="text-center text-light">Pontuação Média</th>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row" class="text-center text-light">{{Red[0]}}</th>
+                                            <td class="text-center text-light">{{totpR[0]}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row" class="text-center text-light">{{Red[1]}}</th>
+                                            <td class="text-center text-light">{{totpR[1]}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row" class="text-center text-light">{{Red[2]}}</th>
+                                            <td class="text-center text-light">{{totpR[2]}}</td>
+                                        </tr>
+                                    </thead>
+                                </table>
+                    </div>
+                </div> 
+            </div>
+            <div class="col-sm B selectt" style="background-color: #1900ff;">
+                <div class="container">
+                    <div class="row mb">
+                        <form action="#" method="get">
+                            <table class="table">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th scope="col" class="text-center text-light">Equipe</th>
+                                      <th scope="col" class="text-center text-light">Docked Autônomo</th>
+                                      <th scope="col" class="text-center text-light">Docked Teleoperado</th>
+                                      <th scope="col" class="text-center text-light">Park Teleoperado</th>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row" class="text-center text-light">{{Blue[0]}}</th>
+                                        <td class="text-center text-light">{{infosB[0][0]}}</td>
+                                        <td class="text-center text-light">{{infosB[0][1]}}</td>
+                                        <td class="text-center text-light">{{infosB[0][2]}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row" class="text-center text-light">{{Blue[1]}}</th>
+                                        <td class="text-center text-light">{{infosB[1][0]}}</td>
+                                        <td class="text-center text-light">{{infosB[1][1]}}</td>
+                                        <td class="text-center text-light">{{infosB[1][2]}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row" class="text-center text-light">{{Blue[2]}}</th>
+                                        <td class="text-center text-light ">{{infosB[2][0]}}</td>
+                                        <td class="text-center text-light">{{infosB[2][1]}}</td>
+                                        <td class="text-center text-light">{{infosB[2][2]}}</td>
+                                    </tr>
+                                  </thead>
+                            </table>
+                        </form>
+                    </div>
+                    <div class="row mb-5">
+                        <div class="col w-25">
+                            {{ divPie1B | safe }}
+                            {{ scriptPie1B | safe }}
+                        </div>
+                        <div class="col w-25">
+                            {{ divPie2B | safe }}
+                            {{ scriptPie2B | safe }}
+                        </div>
+                    </div>
+                    <div class="row mb-5">
+                        <div class="col w-25">
+                            {{ divBarB | safe }}
+                            {{ scriptBarB | safe }}
+                        </div>
+                    </div>
+                    <div class="row mb">
+                                <table class="table">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                            <th scope="col" class="text-center text-light">Equipes</th>
+                                          <th scope="col" class="text-center text-light">Pontuação Média</th>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row" class="text-center text-light">{{Blue[0]}}</th>
+                                            <td class="text-center text-light">{{totpB[0]}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row" class="text-center text-light">{{Blue[1]}}</th>
+                                            <td class="text-center text-light">{{totpB[1]}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row" class="text-center text-light">{{Blue[2]}}</th>
+                                            <td class="text-center text-light">{{totpB[2]}}</td>
+                                        </tr>
+                                    </thead>
+                                </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('input[type="checkbox"]').click(function() {
+                var inputValue = $(this).attr("value");
+                $("." + inputValue).toggle();
+            });
+        }); 
+    </script>
+
+{% endblock %}
+
+

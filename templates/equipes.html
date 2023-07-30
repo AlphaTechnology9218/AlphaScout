@@ -1,0 +1,53 @@
+{%extends 'base.html' %}
+
+{%block content%}
+    <h1>{%block title%}Informações{%endblock%}</h1>
+    <h6 class="text-muted"> Pesquisa sobre uma equipe em específico</h6>
+    {% for message in get_flashed_messages() %}
+        <div class="alert alert-danger" role="alert">{{message}}</div>
+    {%endfor%}
+    <form action="#" method="post">
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="ex.:9218" aria-label="Digite um número de equipe" aria-describedby="basic-addon2" name="TN">
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary" type="submit">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                  </svg>
+              </button>
+            </div>
+        </div>
+    </form>
+    <form action="#" method="get">
+        <div class="row">
+            <div class="col-md-6">
+                <strong class="d-block text-gray-dark" style="font-size: 20px;">Nome:</strong>
+                <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">{{Nome}}</p>
+            </div>
+            <div class="col-md-6">
+                <strong class="d-block text-gray-dark" style="font-size: 20px;">Número da equipe:</strong>
+                <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">{{Num}}</p>
+            </div> 
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <strong class="d-block text-gray-dark" style="font-size: 20px;">Local:</strong>
+                <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">{{Local}}</p>
+            </div>
+            <div class="col-md-3">
+                <strong class="d-block text-gray-dark" style="font-size: 20px;">País:</strong>
+                <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">{{Pais}}</p>
+            </div> 
+            <div class="col-md-3">
+                <strong class="d-block text-gray-dark" style="font-size: 20px;">Estado:</strong>
+                <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">{{Estado}}</p>
+            </div> 
+            <div class="col-md-3">
+                <strong class="d-block text-gray-dark" style="font-size: 20px;">Escola:</strong>
+                <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">{{Escola}}</p>
+            </div> 
+        </div>
+    </form>
+    
+    
+{%endblock%}
