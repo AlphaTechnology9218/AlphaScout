@@ -73,4 +73,4 @@ urllib3==1.26.14
 Werkzeug==2.2.3
 wrapt==1.14.1
 WTForms==3.0.1
-xyzservices==2023.7.0
+xyzservices==2023.2.0
