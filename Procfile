@@ -1,1 +1,1 @@
-web: gunicorn AlphaScout:app
+web: gunicorn app:app
